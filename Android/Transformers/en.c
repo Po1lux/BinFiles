@@ -1,0 +1,175 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdint.h>
+#include<stdlib.h>
+#define LOBYTE(x)   (*((int8_t*)&(x))) 
+char byte_4020[40] = "650f909c-7217-3647-9331-c82df8b98e98";
+int v1;
+uint8_t *v2;
+int8_t *v3;
+int8_t *v4;
+int v5;
+int v6;
+char *v7;
+int v8;
+int v9; // r1
+unsigned int v10; // r2
+int v11; // r3
+int v12; // r0
+int v13; // r4
+uint8_t v14; // r0
+int8_t *v15;
+int8_t *v16;
+char *v17; // r4
+int v18; // r5
+int v19; // r1
+int v20;
+int v21;
+int v22;
+size_t v23; // r0
+unsigned int v24; // r8
+unsigned int v25; // r5
+
+unsigned int v42; // [sp+4h] [bp-234h]
+unsigned int v43; // [sp+8h] [bp-230h]
+unsigned int v44; // [sp+10h] [bp-228h]
+char v46[256]; // [sp+18h] [bp-220h]
+char v47[256]; // [sp+118h] [bp-120h]
+
+char *s = "123123123123";
+char unk_23D8[] = "dbeafc2409715836";
+
+uint8_t byte_23E8[256] = {
+0xD7,0xDF,   2,0xD4,0xFE,0x6F,0x53,0x3C,0x25,0x6C,0x99,0x97,   6,0x56,0x8F,0xDE,//; 0
+0x40,0x11,0x64,   7,0x36,0x15,0x70,0xCA,0x18,0x17,0x7D,0x6A,0xDB,0x13,0x30,0x37,//; 16
+0x29,0x60,0xE1,0x23,0x28,0x8A,0x50,0x8C,0xAC,0x2F,0x88,0x20,0x27, 0xF,0x7C,0x52,//; 32
+0xA2,0xAB,0xFC,0xA1,0xCC,0x21,0x14,0x1F,0xC2,0xB2,0x8B,0x2C,0xB0,0x3A,0x66,0x46,//; 48
+0x3D,0xBB,0x42,0xA5, 0xC,0x75,0x22,0xD8,0xC3,0x76,0x1E,0x83,0x74,0xF0,0xF6,0x1C,//; 64
+0x26,0xD1,0x4F, 0xB,0xFF,0x4C,0x4D,0xC1,0x87,   3,0x5A,0xEE,0xA4,0x5D,0x9E,0xF4,//; 80
+0xC8, 0xD,0x62,0x63,0x3E,0x44,0x7B,0xA3,0x68,0x32,0x1B,0xAA,0x2D,   5,0xF3,0xF7,//; 96
+0x16,0x61,0x94,0xE0,0xD0,0xD3,0x98,0x69,0x78,0xE9, 0xA,0x65,0x91,0x8E,0x35,0x85,//; 112
+0x7A,0x51,0x86,0x10,0x3F,0x7F,0x82,0xDD,0xB5,0x1A,0x95,0xE7,0x43,0xFD,0x9B,0x24,//; 128
+0x45,0xEF,0x92,0x5C,0xE4,0x96,0xA9,0x9C,0x55,0x89,0x9A,0xEA,0xF9,0x90,0x5F,0xB8,//; 144
+   4,0x84,0xCF,0x67,0x93,   0,0xA6,0x39,0xA8,0x4E,0x59,0x31,0x6B,0xAD,0x5E,0x5B,//; 160
+0x77,0xB1,0x54,0xDC,0x38,0x41,0xB6,0x47,0x9F,0x73,0xBA,0xF8,0xAE,0xC4,0xBE,0x34,//; 176
+   1,0x4B,0x2A,0x8D,0xBD,0xC5,0xC6,0xE8,0xAF,0xC9,0xF5,0xCB,0xFB,0xCD,0x79,0xCE,//; 192
+0x12,0x71,0xD2,0xFA,   9,0xD5,0xBC,0x58,0x19,0x80,0xDA,0x49,0x1D,0xE6,0x2E,0xE3,//; 208
+0x7E,0xB7,0x3B,0xB3,0xA0,0xB9,0xE5,0x57,0x6E,0xD9,   8,0xEB,0xC7,0xED,0x81,0xF1,//; 224
+0xF2,0xBF,0xC0,0xA7,0x4A,0xD6,0x2B,0xB4,0x72,0x9D, 0xE,0x6D,0xEC,0x48,0xE2,0x33,//;
+};
+
+int main(){
+	v1 = strlen(byte_4020);
+	v2 = (uint8_t *)calloc(v1,sizeof(uint8_t));
+	v3 = calloc(v1,sizeof(uint8_t));
+	v4 = calloc(v1,sizeof(uint8_t));
+	if ( v1 )
+	  {
+	    v5 = 0;
+	    v6 = v1;
+	    v7 = byte_4020;
+	    //去除”-“，保存到v3中
+	    do
+	    {
+	      v8 = (uint8_t)*v7++;
+	      if ( v8 != '-' )
+	        v3[v5++] = v8;
+	      --v6;
+	    }
+	    while ( v6 );
+	    printf("%s\n",v3);//650f909c721736479331c82df8b98e98
+//--------------------------------------------------------------------
+	    if ( v5 >= 1 )//v5 = 32
+    	{
+	      v9 = v5 - 1;
+	      v10 = -8;
+	      v11 = 0;
+	      v12 = 0;
+	      	do
+	      	{
+		        if ( (v11 | (v10 >> 2)) > 3)
+		        {
+		          v13 = v12;
+		        }
+		        else
+		        {
+		          v13 = v12 + 1;
+		          v2[v12] = '-';
+		        }
+		        v14 = v3[v9--];
+		        v11 += 0x40000000;
+		        v2[v13] = v14;
+		        ++v10;
+		        v12 = v13 + 1;
+		    }
+	        while ( v9 != -1 );
+	        printf("v2: %s\n",v2);//89e89b8f-d28c-1339-7463-7127c909f056
+//--------------------------------------------------------------------
+	        if ( v13 >= 0 ){//v13 = 15
+		        v15 = v4;
+		        while ( 1 )
+		        {
+		          v16 = (int8_t *)*v2;//v16 = 0x38("8")
+		          if ( (uint8_t)((int8_t)v16 - 97) <= 5u )
+		            break;
+		          if ( (uint8_t)((int8_t)v16 - 48) <= 9u )
+		          {
+		            v16 = (char *)&unk_23D8+6+(uint32_t)v16-48;
+		            goto LABEL_18;
+		          }
+		LABEL_19:
+		          *v15 = (int8_t)v16;
+		          v15++;
+		          --v12;
+		          ++v2;
+		          if ( !v12 ){
+		          	printf("v4: %s\n",v4);//36f36b3c-a03e-4996-8759-8408e626c215
+		          	goto LABEL_20;
+		          }
+		        }//end while ( 1 )
+			    v16 = (char *)&unk_23D8 + (uint32_t)v16 - 97;
+		LABEL_18:
+		        LOBYTE(v16) = *v16;
+		        goto LABEL_19;
+	        }//end if ( v13 >= 0 )
+  		}//end if ( v5 >= 1 )//v5 = 32
+	}//end if ( v1 )
+LABEL_20:
+//--------------------------------------------------------------------将36f36b3c-a03e-4996-8759-8408e626c215扩充到256字节
+	memcpy(v46,byte_23E8,256);
+	v17 = v47;
+	v18 = 0;
+	do{
+		v19 = v18%v1;//sub_D20(v18, v1);
+		v47[v18] = v4[v19];
+		v18++;
+	}
+	while(v18!=256);
+	printf("扩充v4，v47: %s END\n", v47);
+//--------------------------------------------------------------------
+	v20 = (uint8_t)(v47[0] - 0x29);
+	v46[0] = v46[v20];
+	v46[v20] = -41;
+	v21 = 1;
+	do
+	{
+		v22 = (uint8_t)v46[v21];
+		v20 = (v20 + (uint8_t)v47[v21] + v22) % 256;
+		v46[v21++] = v46[v20];
+		v46[v20] = v22;
+	}
+	while ( v21 != 256 );
+	v23 = strlen(s);
+	v24 = v23;
+	v25 = (uint8_t)v4[3];
+	v43 = 8 * (3 - -3 * (v23 / 3));
+	v42 = v25 + v43 / 6 +1;
+	printf("%d\n",v42);
+
+
+
+
+
+
+	return 0;
+}
